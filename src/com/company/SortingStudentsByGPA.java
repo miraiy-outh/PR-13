@@ -3,9 +3,10 @@ package com.company;
 import java.net.IDN;
 import java.util.*;
 
-public class SortingStudentsByGPA extends StudentComparator {
+public class SortingStudentsByGPA {
     public ArrayList<Student> IDNumber1 = new ArrayList<>();
     public ArrayList<Student> IDNumber2 = new ArrayList<>();
+    private StudentComparator comparator = new StudentComparator();
 
     SortingStudentsByGPA(int cnt1, int cnt2) {
         Scanner scan = new Scanner(System.in);
@@ -29,7 +30,7 @@ public class SortingStudentsByGPA extends StudentComparator {
         out(IDNumber1);
 
         if (IDNumber2.size() == 2) {
-            if (compare(IDNumber2.get(0), IDNumber2.get(1)) == 1) {
+            if (comparator.compare(IDNumber2.get(0), IDNumber2.get(1)) == 1) {
                 Student def = IDNumber2.get(0);
                 IDNumber2.set(0, IDNumber2.get(1));
                 IDNumber2.set(1, def);
@@ -72,7 +73,7 @@ public class SortingStudentsByGPA extends StudentComparator {
 
         int i = 0, j = 0, k = 0;
         while (i < left && j < right) {
-            if (compare(l.get(i), r.get(j)) == 1) {
+            if (comparator.compare(l.get(i), r.get(j)) == 1) {
                 a.set(k++,r.get(j++));
             }
             else {
